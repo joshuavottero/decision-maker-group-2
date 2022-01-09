@@ -1,0 +1,28 @@
+$text-size: 30px;
+$header-color: pink;
+
+body > header {
+  height: auto;
+  width: 100%;
+  font-size: $text-size;
+  background-color: $header-color;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.nav-items {
+  width: 15em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+
