@@ -8,5 +8,5 @@ CREATE TABLE polls (
   description TEXT,
   vote_link VARCHAR(255) NOT NULL,
   result_link VARCHAR(255) NOT NULL,
-  creator_id INTEGER REFERENCES users(id) DELETE ON CASCADE
+  creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
