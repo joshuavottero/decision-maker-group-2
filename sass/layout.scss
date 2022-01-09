@@ -1,0 +1,19 @@
+// See: https://sass-lang.com/
+
+// body,
+// html {
+//   margin: 30;
+// }
+
+$text-size: 30px;
+$header-color: pink;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: $text-size;
+  background-color: $header-color;
+}
+
+
