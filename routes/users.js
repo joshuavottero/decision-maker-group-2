@@ -23,24 +23,37 @@ module.exports = (db) => {
       });
   });
 
+  router.get('/login', (req,res) => {
+
+  });
+
   router.post('/login', (req, res) => {
     const email = req.body.email;
 
     db.query(`SELECT * FROM users WHERE email = $1`, [email])
       .then(dbRes => {
-        if (dbRes.rows) {
+        if (dbRes.rows.length > 0) {
           req.session.email = email;
+          res.cookie('email', email);
           res.redirect('/polls');
         }
-        // email does not match error message
+        else {
+          res.status(403).send('Email does not exist in Database');
+        }
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
-
-    req.session.email = email;
   });
+
+  router.post('/logout', (req,res) => {
+    res.clearCookie('email');
+    res.redirect('/');
+  });
+
   return router;
 };
+
+
