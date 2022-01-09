@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/poll-create.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/polls.css" type="text/css" />
 
   <!-- App CSS -->
   <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css"/> -->
@@ -28,9 +28,39 @@
 
   <main>
     <form class="polls-form" method="POST">
-      <textarea placeholder="Enter your email"></textarea>
-      <a href="/">Submission Link</a>
-      <a href="/">Delete</a>
+      <div class= "pool-form-item">
+        <label>Email</label>
+        <textarea class="form-textarea"  placeholder="Enter your email"></textarea>
+      </div>
+      <span>255 chars left</span>
+      <div class= "pool-form-item">
+        <label>Poll Title</label>
+        <textarea class="form-textarea"  placeholder="Enter pool title"></textarea>
+
+      </div>
+      <span>255 chars left</span>
+      <div class= "pool-form-item">
+        <label>Poll Description</label>
+        <textarea  class="form-textarea"  placeholder="Enter poll description"></textarea>
+      </div>
+      <span>255 chars left</span>
+
+      <div class= "pool-form-item">
+        <label>option 1</option></option></label>
+        <textarea  class="form-textarea"  placeholder="Pool Item 1"></textarea>
+        <button id="form-remove-button" type="?">remove option</button>
+      </div>
+      <div class= "pool-form-item">
+        <label>option 2</label>
+        <textarea  class="form-textarea"  placeholder="Pool Item 1"></textarea>
+        <button id="form-remove-button" type="?">remove option</button>
+      </div>
+      <div class= "pool-form-item">
+        <button id="form-add-button" class="center pool-form-button" type="?">add option</button>
+      </div>
+      <div class="pool-form-item center">
+        <button id="form-submit-button" class="center pool-form-button" type="submit">Submit</button>
+      </div>
     </div>
   </main>
 </body>
