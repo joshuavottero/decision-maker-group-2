@@ -49,7 +49,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("polls");
+  res.render("poll-create");
 });
 
 app.listen(PORT, () => {

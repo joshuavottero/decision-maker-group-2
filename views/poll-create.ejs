@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/polls.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/poll-create.css" type="text/css" />
 
   <!-- App CSS -->
   <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css"/> -->
@@ -27,13 +27,8 @@
   <%- include('partials/_header') %>
 
   <main>
-    <div class="polls">
-      <span>Poll 1:</span>
-      <a href="/">Submission Link</a>
-      <a href="/">Delete</a>
-    </div>
-    <div class="polls">
-      <span>Poll 2:</span>
+    <form class="polls-form" method="POST">
+      <textarea placeholder="Enter your email"></textarea>
       <a href="/">Submission Link</a>
       <a href="/">Delete</a>
     </div>
