@@ -18,3 +18,4 @@
 * Use styled alert pop-up boxes for submitting forms
 * Counting how many people voted
 * Expiration date and status of poll
+* Character limit for option descriptions
