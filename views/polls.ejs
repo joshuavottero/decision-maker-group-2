@@ -27,16 +27,19 @@
   <%- include('partials/_header') %>
 
   <main>
-    <div class="polls">
-      <span>Poll 1:</span>
-      <a href="/">Submission Link</a>
-      <a href="/">Delete</a>
-    </div>
-    <div class="polls">
+    <% for(let poll of polls) { %>
+      <div class="polls">
+        <span><%=poll.title%>:</span>
+        <span><%=poll.description%></span>
+        <a href="/">Submission Link</a>
+        <a href="/">Delete</a>
+      </div>
+    <% } %>
+    <!-- <div class="polls">
       <span>Poll 2:</span>
       <a href="/">Submission Link</a>
       <a href="/">Delete</a>
-    </div>
+    </div> -->
   </main>
 </body>
 
