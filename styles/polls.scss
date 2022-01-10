@@ -1,0 +1,35 @@
+.polls {
+  margin: auto;
+  margin-top: 20px;
+  border-color: black;
+  border-width: 5px, 5px, 5px, 5px;
+  border-style: solid;
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.polls-form {
+  margin: auto;
+  margin-top: 20px;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.pool-form-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 40px;
+  width: 100%;
+}
+.pool-form-textarea {
+  width: 60%;
+}
+
+.pool-form-button {
+  min-width: 10%;
+}
+
