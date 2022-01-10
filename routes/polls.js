@@ -9,18 +9,18 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db, mailgun) => {
-  router.get('/', (req, res) => {
-        db.query (`SELECT * FROM polls WHERE creator_id=$1`, [req.session.user_id])
-    .then(data => {
-        const polls = data.rows;
-        res.json({ polls });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+  // router.get('/', (req, res) => {
+  //       db.query (`SELECT * FROM polls WHERE creator_id=$1`, [req.session.user_id])
+  //   .then(data => {
+  //       const polls = data.rows;
+  //       res.json({ polls });
+  //     })
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
 
   // router.get('/new', (req, res) => {
 
