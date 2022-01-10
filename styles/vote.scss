@@ -1,0 +1,24 @@
+.form-vote-items {
+  margin: auto;
+  margin-top: 20px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.form-vote-item{
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.form-vote-button {
+  max-width: 10%;
+}
+.rank-border {
+  border-color: black;
+  border-width: 5px, 5px, 5px, 5px;
+  border-style: solid;
+  width: 50%;
+}

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/vote.css" type="text/css" />
 
   <!-- App CSS -->
   <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css"/> -->
@@ -26,7 +27,33 @@
   <%- include('partials/_header') %>
 
   <main>
-    <p>welcome to Decision-Maker start by <a href="/">makeing a poll</a></p>
+
+    <div>
+      <span>Pool title</span>
+    </div>
+    <div>
+      <span>Poll description</span>
+    </div>
+    <form class="form-vote-items" class="polls-form" method="POST">
+      <div class="form-vote-item">
+        <label>option 1</label>
+        <label>rank 1</label>
+      </div>
+      <div class="form-vote-item">
+        <span>description</span>
+        <span id="item-rank1" class="rank-border"></span>
+      </div>
+      <div class="form-vote-item">
+        <label>option 2</label>
+        <label>rank 2</label>
+      </div>
+      <div class="form-vote-item">
+        <span>description</span>
+        <span id="item-rank2" class="rank-border"></span>
+      </div>
+      <button id="form-submit-button" class="center form-vote-button form-vote-item" type="?">Reset</button>
+      <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit</button>
+    </form>
   </main>
 </body>
 
