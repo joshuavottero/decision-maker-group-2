@@ -10,9 +10,16 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM polls`;
+    const email = 'user2@decisions.com';
+    req.session.email = email;
+
+    let query = `
+    SELECT * FROM polls
+    JOIN users ON users.id = creator_id
+    WHERE email = $1
+    `;
     console.log(query);
-    db.query(query)
+    db.query(query, [req.session.email])
       .then(data => {
         const polls = data.rows;
         res.json({ polls });
