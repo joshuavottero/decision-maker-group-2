@@ -64,7 +64,7 @@ app.use("/polls", pollsRoutes(db,mailgun));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("results");
 });
 
 app.listen(PORT, () => {
