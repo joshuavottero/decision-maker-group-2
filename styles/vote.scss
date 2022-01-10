@@ -15,18 +15,10 @@
   flex-direction: column;
 }
 
-.form-vote-item {
+.vote-items {
   display: flex;
   flex-direction: column;
-}
-
-.form-vote-button {
-  max-width: 10%;
-}
-
-.rank-border {
   border-color: black;
   border-width: 5px, 5px, 5px, 5px;
   border-style: solid;
-  width: 50%;
 }

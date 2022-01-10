@@ -21,6 +21,7 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/vote.js"></script>
 </head>
 
 <body>
@@ -38,7 +39,7 @@
       <div class="vote-ranking">
         <div class="vote-options">
         <% for (const pollOption of poll) { %>
-          <div class="form-vote-item">
+          <div class="vote-items">
             <label><%= pollOption.label %></label>
             <span><%= pollOption.label_description %></span>
           </div>
@@ -46,21 +47,13 @@
         </div>
         <div class="vote-option">
         <% for (const rank of poll) { %>
-          <div class="form-vote-item">
-            <span id="item-rank1" class="rank-border">Rank <%= poll.indexOf(rank) + 1 %></span>
+          <div class="vote-items">
+            <span class="rank">Rank <%= poll.indexOf(rank) + 1 %></span>
           </div>
         <% } %>
         </div>
       </div>
-      <!-- <div class="form-vote-item">
-        <label>option 2</label>
-        <label>rank 2</label>
-      </div>
-      <div class="form-vote-item">
-        <span>description</span>
-        <span id="item-rank2" class="rank-border"></span>
-      </div> -->
-      <button id="form-submit-button" class="center form-vote-button form-vote-item" type="?">Reset</button>
+      <button id="form-reset-button" class="center form-vote-button form-vote-item" type="?">Reset</button>
       <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit</button>
     </form>
   </main>
