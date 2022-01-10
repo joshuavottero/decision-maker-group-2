@@ -8,7 +8,7 @@ module.exports = (db) => {
       const polls = data.rows;
       const templateVars = { polls };
 
-      res.render('index', templateVars);
+      res.render('polls', templateVars);
     })
     .catch(err => {
       res
@@ -20,12 +20,17 @@ module.exports = (db) => {
   router.get('/:id', (req, res) => {
     const pollId = req.params.id;
 
-    db.query (`SELECT * FROM options WHERE poll_id=$1;`, [pollId])
+    db.query (`
+    SELECT title, description, options.*
+    FROM polls
+    JOIN options ON polls.id = poll_id
+    WHERE poll_id = $1;
+    `, [pollId])
     .then(data => {
-      const options = data.rows;
-      const templateVars = { options };
+      const poll = data.rows;
+      const templateVars = { poll };
 
-      res.render('index', templateVars);
+      res.render('vote', templateVars);
     })
     .catch(err => {
       res

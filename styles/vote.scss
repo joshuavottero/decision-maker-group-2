@@ -1,21 +1,29 @@
-.form-vote-items {
-  margin: auto;
-  margin-top: 20px;
-  width: 50%;
+.vote-form {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+}
+
+.vote-ranking {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.vote-options {
+  display: flex;
   flex-direction: column;
 }
-.form-vote-item{
-  margin-top: 40px;
-  width: 100%;
+
+.form-vote-item {
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
 }
+
 .form-vote-button {
   max-width: 10%;
 }
+
 .rank-border {
   border-color: black;
   border-width: 5px, 5px, 5px, 5px;
