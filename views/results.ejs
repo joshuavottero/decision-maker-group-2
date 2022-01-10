@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/results.css" type="text/css" />
 
   <!-- App CSS -->
   <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css"/> -->
@@ -26,7 +27,25 @@
   <%- include('partials/_header') %>
 
   <main>
-    <p>welcome to Decision-Maker start by <a href="/">makeing a poll</a></p>
+    <div class="results">
+
+      <span>Poll Title</span>
+      <span>Poll Description</span>
+
+      <div class="results-item">
+        <span>1 place</span>
+        <span>description</span>
+      </div>
+      <div class="results-item">
+        <span>2 place</span>
+        <span>description</span>
+      </div>
+      <div class="results-item">
+        <span>3 place</span>
+        <span>description</span>
+      </div>
+      <a class="results-link" href="/">Check other polls</a>
+    </div>
   </main>
 </body>
 

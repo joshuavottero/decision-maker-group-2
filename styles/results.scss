@@ -1,0 +1,22 @@
+.results {
+   margin: auto;
+   margin-top: 20px;
+   width: 40%;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
+}
+
+.results-item {
+  margin: auto;
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.results-link {
+  margin-top: 40px;
+  text-decoration: none;
+}
