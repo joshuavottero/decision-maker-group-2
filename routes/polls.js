@@ -28,9 +28,26 @@ module.exports = (db, mailgun) => {
     res.render('poll-create');
   });
 
-  // router.get('/results', (req, res) => {
-
-  // });
+  router.get('/:id/results', (req, res) => {
+    db.query(`SELECT title, description,
+      options.label, options.label_description, options.points, users.id
+      FROM polls
+      JOIN options ON polls.id = options.poll_id
+      JOIN users ON polls.creator_id = users.id
+      WHERE polls.id = $1
+      ORDER BY options.points DESC`, [req.params.id])
+    .then(data => {
+      const options = data.rows;
+      const templateVars = { options };
+      console.log(templateVars);
+      return res.render('results', templateVars);
+    })
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
+  });
 
   router.get('/:id', (req, res) => {
     db.query(`SELECT title, description

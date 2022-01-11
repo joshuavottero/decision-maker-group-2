@@ -29,22 +29,19 @@
   <main>
     <div class="results">
 
-      <span>Poll Title</span>
-      <span>Poll Description</span>
+      <!-- all option. titles and description are the same -->
+      <span><%=options[0].title%></span>
+      <span><%=options[0].description%></span>
 
-      <div class="results-item">
-        <span>1st place</span>
-        <span>description</span>
-      </div>
-      <div class="results-item">
-        <span>2 place</span>
-        <span>description</span>
-      </div>
-      <div class="results-item">
-        <span>3 place</span>
-        <span>description</span>
-      </div>
-      <a class="results-link" href="/">Check other polls</a>
+      <% for(const option of options) { %>
+        <div class="results-item">
+          <span><%=options.indexOf(option) + 1%> place</span>
+          <span><%=option.label%></span>
+          <span><%=option.label_description%></span>
+          <span>Score: <%=option.points%></span>
+        </div>
+      <% } %>
+      <a class="results-link" href="/polls/<%=options[0].id%>">Check other polls</a>
     </div>
   </main>
 </body>
