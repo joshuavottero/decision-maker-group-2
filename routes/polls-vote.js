@@ -2,20 +2,6 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get('/', (req, res) => {
-    db.query (`SELECT * FROM polls WHERE creator_id=$1;`, [1])
-    .then(data => {
-      const polls = data.rows;
-      const templateVars = { polls };
-
-      res.render('polls', templateVars);
-    })
-    .catch(err => {
-      res
-      .status(500)
-      .json({ error: err.message });
-    });
-  });
 
   router.get('/:id', (req, res) => {
     const pollId = req.params.id;
