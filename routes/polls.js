@@ -24,9 +24,9 @@ module.exports = (db, mailgun) => {
       });
   });
 
-  // router.get('/new', (req, res) => {
-
-  // });
+  router.get('/new', (req, res) => {
+    res.render('poll-create');
+  });
 
   // router.get('/results', (req, res) => {
 

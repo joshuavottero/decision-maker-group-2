@@ -27,47 +27,58 @@
   <%- include('partials/_header') %>
 
   <main>
-    <form class="polls-form" method="POST">
-      <div class= "pool-form-item">
+    <form class="polls-form" id="polls-form" action="/polls" method="POST">
+      <div class= "poll-form-item">
         <label>Email</label>
-        <textarea class="form-textarea" id="poll-email"  placeholder="Enter your email"></textarea>
+        <textarea class="form-textarea" name="email"   placeholder="Enter your email"></textarea>
       </div>
-      <span>255 chars left</span>
-      <div class= "pool-form-item">
+
+      <div class= "poll-form-item">
         <label>Poll Title</label>
-        <textarea class="form-textarea" action="/polls" method="POST" id="poll-email"  placeholder="Enter pool title"></textarea>
-
+        <textarea class="form-textarea" name="pollTitle"    placeholder="Enter pool title"></textarea>
       </div>
-      <span>255 chars left</span>
-      <div class= "pool-form-item">
+
+      <div class= "poll-form-item">
         <label>Poll Description</label>
-        <textarea  class="form-textarea" action="/polls" method="POST" id="poll-description"  placeholder="Enter poll description"></textarea>
+        <textarea  class="form-textarea" name="description"    placeholder="Enter poll description"></textarea>
       </div>
-      <span>255 chars left</span>
 
-      <div class= "pool-form-item">
+      <div class="poll-form-options" id="options">
+      <div class= "poll-form-item">
         <label>option 1</option></option></label>
-        <textarea  class="form-textarea"  action="/polls" method="POST" placeholder="Pool Item 1"></textarea>
-        <button id="form-remove-button" type="?">remove option</button>
+        <textarea  class="form-textarea" name="label1"   placeholder="Pool Item 1"></textarea>
       </div>
-      <div class= "pool-form-item">
+      <div class= "poll-form-item">
+        <label>option 1 description</option></option></label>
+        <textarea  class="form-textarea"  name="labelDescription1"   placeholder="Pool Description 1"></textarea>
+      </div>
+      <div class= "poll-form-item">
         <label>option 2</label>
-        <textarea  class="form-textarea"  action="/polls" method="POST" placeholder="Pool Item 2"></textarea>
-        <button id="form-remove-button" type="?">remove option</button>
+        <textarea  class="form-textarea"  name="label2"   placeholder="Pool Item 2"></textarea>
       </div>
-      <div class= "pool-form-item">
+      <div class= "poll-form-item">
+        <label>option 2 description</option></option></label>
+        <textarea  class="form-textarea"  name="labelDescription2"   placeholder="Pool Description 2"></textarea>
+      </div>
+      <div class= "poll-form-item">
         <label>option 3</label>
-        <textarea  class="form-textarea"  action="/polls" method="POST" placeholder="Pool Item 3"></textarea>
-        <button id="form-remove-button" type="?">remove option</button>
+        <textarea  class="form-textarea" name="label3"   placeholder="Pool Item 3"></textarea>
       </div>
-      <div class= "pool-form-item">
-        <button id="form-add-button" class="center pool-form-button" type="?">add option</button>
-      </div>
-      <div class="pool-form-item center">
-        <button id="form-submit-button" class="center pool-form-button" type="submit">Submit</button>
+      <div class= "poll-form-item">
+        <label>option 3 description</option></option></label>
+        <textarea  class="form-textarea"  name="labelDescription3"   placeholder="Pool Description 3"></textarea>
       </div>
     </div>
+      <div class= "poll-form-item">
+        <button id="form-add-button" class="center pool-form-button" type="?">add option</button>
+      </div>
+      <div class="poll-form-item" center>
+        <button id="form-submit-button" class="center pool-form-button" type="submit">Submit</button>
+      </div>
+    </form>
+
   </main>
+
 </body>
 
 </html>
