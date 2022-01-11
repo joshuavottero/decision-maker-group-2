@@ -8,17 +8,28 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 20em;
+}
+
+.vote-options, .rank-options {
+  display: flex;
+  flex-direction: column;
 }
 
 .vote-options {
-  display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.vote-items {
+.rank-options {
+  width: 15em;
+  justify-content: stretch;
+}
+
+.vote-items, .rank-items {
   display: flex;
   flex-direction: column;
-  border-color: black;
-  border-width: 5px, 5px, 5px, 5px;
-  border-style: solid;
+  margin: 1em 0;
+  // border-color: black;
+  // border-width: 5px, 5px, 5px, 5px;
+  // border-style: solid;
 }

@@ -31,31 +31,31 @@ module.exports = (db, mailgun) => {
 
   // });
 
-  router.get('/:id', (req, res) => {
-    db.query(`SELECT title, description
-              FROM polls
-              JOIN users ON creator_id = users.id
-              WHERE users.id = $1`,[req.params.id])
-    .then(data => {
-      // const templateVars= {}
-      // for (let i = 0; i < data.rows.length; i++){
-      //   templateVars[i] = {
-      //     title: data.rows[i].title,
-      //     description: data.rows[i].description
-      //   }
-      // }
-      const polls = data.rows;
-      const templateVars = { polls };
-      console.log(data.rows);
-      // console.log(templateVars);
-      return res.render('polls', templateVars);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-  });
+  // router.get('/', (req, res) => {
+  //   db.query(`SELECT title, description
+  //             FROM polls
+  //             JOIN users ON creator_id = users.id
+  //             WHERE users.id = $1`,[req.params.id])
+  //   .then(data => {
+  //     // const templateVars= {}
+  //     // for (let i = 0; i < data.rows.length; i++){
+  //     //   templateVars[i] = {
+  //     //     title: data.rows[i].title,
+  //     //     description: data.rows[i].description
+  //     //   }
+  //     // }
+  //     const polls = data.rows;
+  //     const templateVars = { polls };
+  //     console.log(data.rows);
+  //     // console.log(templateVars);
+  //     return res.render('polls', templateVars);
+  //   })
+  //   .catch(err => {
+  //     res
+  //       .status(500)
+  //       .json({ error: err.message });
+  //   });
+  // });
 
   // router.post('/:id', (req, res) => {
 
