@@ -30,7 +30,7 @@ app.use(cookieSession({
   keys: ['email']
 })
 );
-app.use(express.json())
+app.use(express.json());
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -52,11 +52,13 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const pollsRoutes = require("./routes/polls");
+const pollsVoteRoute = require("./routes/polls-vote");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
 app.use("/polls", pollsRoutes(db,mailgun));
+app.use("/polls", pollsVoteRoute(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -64,7 +66,7 @@ app.use("/polls", pollsRoutes(db,mailgun));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("results");
+  res.render("index");
 });
 
 app.listen(PORT, () => {

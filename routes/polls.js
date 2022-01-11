@@ -12,16 +12,18 @@ const router  = express.Router();
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-        db.query (`SELECT * FROM polls WHERE creator_id=$1`, [req.session.user_id])
+    db.query (`SELECT * FROM polls WHERE creator_id=$1;`, [1])
     .then(data => {
-        const polls = data.rows;
-        res.json({ polls });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+      const polls = data.rows;
+      const templateVars = { polls };
+
+      res.render('polls', templateVars);
+    })
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
   });
 
   router.get('/new', (req, res) => {
@@ -46,32 +48,6 @@ module.exports = (db, mailgun) => {
       res
       .status(500)
       .json({ error: err.message });
-    });
-  });
-
-  router.get('/:id', (req, res) => {
-    db.query(`SELECT title, description
-              FROM polls
-              JOIN users ON creator_id = users.id
-              WHERE users.id = $1`,[req.params.id])
-    .then(data => {
-      // const templateVars= {}
-      // for (let i = 0; i < data.rows.length; i++){
-      //   templateVars[i] = {
-      //     title: data.rows[i].title,
-      //     description: data.rows[i].description
-      //   }
-      // }
-      const polls = data.rows;
-      const templateVars = { polls };
-      console.log(data.rows);
-      // console.log(templateVars);
-      return res.render('polls', templateVars);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
     });
   });
 
