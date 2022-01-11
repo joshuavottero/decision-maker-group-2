@@ -17,17 +17,18 @@
 }
 
 .vote-options {
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .rank-options {
   width: 15em;
-  justify-content: stretch;
+  justify-content: space-around;
 }
 
 .vote-items, .rank-items {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   margin: 1em 0;
   // border-color: black;
   // border-width: 5px, 5px, 5px, 5px;

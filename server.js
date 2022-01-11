@@ -30,7 +30,7 @@ app.use(cookieSession({
   keys: ['email']
 })
 );
-app.use(express.json())
+app.use(express.json());
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -66,7 +66,7 @@ app.use("/polls", pollsVoteRoute(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("results");
+  res.render("index");
 });
 
 app.listen(PORT, () => {

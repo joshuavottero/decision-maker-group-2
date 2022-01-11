@@ -41,10 +41,32 @@ module.exports = (db) => {
 
   router.post('/:id', (req, res) => {
     const pollId = req.params.id;
+    const points = Object.values(JSON.parse(req.body.vote));
+    console.log(points);
 
-    db.query (`SELECT * FROM options WHERE poll_id = $1;`, [pollId])
+    db.query (`
+    SELECT * FROM options
+    WHERE poll_id = $1
+    ORDER BY id;
+    `, [pollId])
     .then(data => {
       const options = data.rows;
+      console.log(options);
+
+      for (let i = 0; i < options.length; i++) {
+        db.query (`
+        UPDATE options
+        SET points = $1
+        WHERE poll_id = $2 AND id = $3;
+        `, [points[i] + options[i].points, pollId, options[i].id])
+        .catch(err => {
+          res
+          .status(504)
+          .json({ error: err.message });
+        });
+      }
+
+      res.redirect('/');
     })
     .catch(err => {
       res

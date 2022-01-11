@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $('input#vote-input').hide();
+
   $('div.vote-items').on('dragstart', function(event) {
     event.originalEvent.dataTransfer.setData('text/plain', event.target.id);
 
@@ -21,13 +23,18 @@ $(document).ready(function() {
   });
 
   $('button#form-submit-button').on('mouseover', function(event) {
-    const $voteItems = $('div.vote-items');
-    const totalPoints = [];
+    const $voteItems = $('div.rank-options').find('div.vote-items');
+    const totalPoints = {};
 
     for (let i = 0; i < $voteItems.length; i++) {
+      const id = $($voteItems[i]).attr('id').slice(-1);
       const points = $voteItems.length - i;
-      totalPoints.push(points);
+      totalPoints[id] = points;
     }
+    const formData = JSON.stringify(totalPoints);
+    console.log(formData);
+    $('input#vote-input').val(formData);
+    console.log($('input#vote-input').val());
   });
 
 });
