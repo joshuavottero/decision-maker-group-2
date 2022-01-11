@@ -4,8 +4,6 @@ $(document).ready(function() {
 
   $('div.vote-items').on('dragstart', function(event) {
     event.originalEvent.dataTransfer.setData('text/plain', event.target.id);
-
-    event.currentTarget.style.backgroundColor = 'yellow';
   });
 
   $('div.rank-options').on('dragover', function(event) {
@@ -17,7 +15,7 @@ $(document).ready(function() {
 
     const draggableElement = document.getElementById(id);
     const dropzone = event.target;
-    dropzone.appendChild(draggableElement);
+    dropzone.append(draggableElement);
 
     event.originalEvent.dataTransfer.clearData();
   });
@@ -35,6 +33,19 @@ $(document).ready(function() {
     console.log(formData);
     $('input#vote-input').val(formData);
     console.log($('input#vote-input').val());
+  });
+
+  $('button#form-submit-button').on('click', function(event) {
+    const $rankItems = $('div.rank-options').find('div.vote-items');
+    const $voteItems = $('div.vote-options').find('div.vote-items');
+
+    if ($rankItems.length < $voteItems.length && $('p.vote-error').length <= 0) {
+
+      $('<p>', {
+        class: 'vote-error',
+        text: 'Please rank all options'
+      }).appendTo('form.reset-button');
+    }
   });
 
 });

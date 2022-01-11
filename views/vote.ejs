@@ -30,28 +30,27 @@
 
   <main>
 
-    <div>
-      <span><%= poll[0].title %></span>
-    </div>
-    <div>
-      <span><%= poll[0].description %></span>
-    </div>
-    <form method="GET" action="/polls/<%= poll[0].id %>">
-      <button type="submit" name="reset" class="btn btn-outline-primary">Reset</button>
+    <h2><%= poll[0].title %></h2>
+    <h3><%= poll[0].description %></h3>
+    <h4>Drag and drop each option to the right side in order of your preference!</h4>
+    <form class="reset-button" method="GET" action="/polls/<%= poll[0].id %>">
+      <button type="submit" name="reset">Reset</button>
     </form>
+    <div class="vote-labels">
+      <h4>Choices</h4>
+      <h4>Ranks</h4>
+    </div>
     <form class="vote-form" method="POST">
       <div class="vote-ranking">
         <div class="vote-options">
         <% for (const pollOption of poll) { %>
           <div class="vote-items" id="draggable-<%= poll.indexOf(pollOption) + 1 %>"
           draggable="true">
-            <label><%= pollOption.label %></label>
-            <span><%= pollOption.label_description %></span>
+            <label><%= pollOption.label %><br><%= pollOption.label_description %></label>
           </div>
         <% } %>
         </div>
-        <div class="rank-options">
-        </div>
+        <div class="rank-options"></div>
       </div>
       <input id="vote-input" type="text" name="vote">
       <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit</button>

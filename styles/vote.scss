@@ -1,3 +1,8 @@
+.vote-labels {
+  display: flex;
+  justify-content: space-around;
+}
+
 .vote-form {
   display: flex;
   flex-direction: column;
@@ -8,21 +13,22 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 20em;
+  flex-basis: 100%;
+  flex-grow: 1;
+  margin: 1em 0 3em 0;
 }
 
 .vote-options, .rank-options {
   display: flex;
   flex-direction: column;
-}
-
-.vote-options {
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-basis: 100%;
+  flex-grow: 1;
+  padding: 3em;
 }
 
 .rank-options {
-  width: 15em;
-  justify-content: space-around;
+  background-color: aquamarine;
 }
 
 .vote-items, .rank-items {
@@ -30,7 +36,16 @@
   flex-direction: column;
   justify-content: space-around;
   margin: 1em 0;
-  // border-color: black;
-  // border-width: 5px, 5px, 5px, 5px;
-  // border-style: solid;
+  background-color: coral;
+  padding: 1em;
+}
+
+.vote-error {
+  padding: 1em;
+  background-color: crimson;
+}
+
+#form-submit-button {
+  margin-bottom: 2em;
+  align-self: center;
 }

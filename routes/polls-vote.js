@@ -42,7 +42,6 @@ module.exports = (db) => {
   router.post('/:id', (req, res) => {
     const pollId = req.params.id;
     const points = Object.values(JSON.parse(req.body.vote));
-    console.log(points);
 
     db.query (`
     SELECT * FROM options
@@ -51,14 +50,19 @@ module.exports = (db) => {
     `, [pollId])
     .then(data => {
       const options = data.rows;
-      console.log(options);
+
+      if (points.length < options.length || points.length > options.length) {
+        return console.log('Error: all options have not been ranked');
+      }
 
       for (let i = 0; i < options.length; i++) {
         db.query (`
         UPDATE options
         SET points = $1
-        WHERE poll_id = $2 AND id = $3;
+        WHERE poll_id = $2 AND id = $3
+        RETURNING *;
         `, [points[i] + options[i].points, pollId, options[i].id])
+        .then(data => console.log(data.rows))
         .catch(err => {
           res
           .status(504)
