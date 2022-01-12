@@ -35,7 +35,7 @@
 
       <% for (const option of options) { %>
       data.addRows([
-        [<%- JSON.stringify(option.label) %>, <%- JSON.stringify(option.points) %>],
+        [<%- JSON.stringify(option.fullLabel) %>, <%- JSON.stringify(option.points) %>],
       ]);
       <% } %>
 
@@ -66,10 +66,11 @@
 
   <main>
     <section id="results">
-      <h3>Final Results for "<%= options[0].title %>"</h3>
+      <h3>Final Results for "<%= options[0].title %>":</h3>
+      <h4>"<%= options[0].label %>" WINS with <%= options[0].points %> points!</h4>
       <div id="pie-chart-container"></div>
       <div id="bar-chart-container"></div>
-      <h4>Total Votes Cast: <%= totalPoints / (options.length + 1) %></h4>
+      <h4>Total Votes Cast: <%= totalVotes %></h4>
       <h4>Total Points: <%= totalPoints %></h4>
     </section>
 

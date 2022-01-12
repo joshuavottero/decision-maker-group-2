@@ -36,10 +36,9 @@ module.exports = (db, mailgun) => {
 
   router.get('/:id/results', (req, res) => {
     db.query(`SELECT title, description,
-      options.label, options.label_description, options.points, users.id
+      options.label, options.label_description, options.points
       FROM polls
       JOIN options ON polls.id = options.poll_id
-      JOIN users ON polls.creator_id = users.id
       WHERE polls.id = $1
       ORDER BY options.points DESC`, [req.params.id])
     .then(data => {
@@ -48,9 +47,17 @@ module.exports = (db, mailgun) => {
 
       for (const option of options) {
         totalPoints += Number(option.points);
+        if (option.label_description) {
+          option.fullLabel = `${option.label}: \n ${option.label_description}`;
+        } else {
+          option.fullLabel = option.label;
+        }
       }
 
-      const templateVars = { options, totalPoints };
+      const totalVotes = totalPoints / (
+        (options.length * (options.length / 2)) + (options.length - (options.length / 2))
+        );
+      const templateVars = { options, totalPoints, totalVotes };
       console.log(templateVars);
       return res.render('results', templateVars);
     })
