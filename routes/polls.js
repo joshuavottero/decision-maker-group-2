@@ -13,7 +13,7 @@ const router  = express.Router();
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-    db.query (`SELECT * FROM polls WHERE creator_id=$1;`, [1])
+    db.query (`SELECT * FROM polls WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
       const templateVars = { polls };
