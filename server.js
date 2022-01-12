@@ -11,10 +11,18 @@ const morgan = require("morgan");
 const cookieSession = require("cookie-session");
 
 
-const mailgun = require('mailgun-js')
-       ({apiKey: '76f111c4-f4c80163', domain: 'sandbox69151c28390c4cadbc23a0d1cb8d2b2c.mailgun.org'}); // add to process.env later
+// mailgun
+// const apiKey = process.env.API_KEY;
+// const DOMAIN = process.env.DOMAIN;
+// const formData = require('form-data');
+// const Mailgun = require('mailgun-js');
+// const mailgun = new Mailgun(formData);
+// const client = mailgun.client({username: 'api', key: API_KEY});
+const api_key = process.env.API_KEY;
+const domain = process.env.DOMAIN;
+const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
-
+//
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -46,8 +54,6 @@ app.use(
 
 app.use(express.static("public"));
 
-// app.use(mailgun);
-
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -57,6 +63,7 @@ const pollsVoteRoute = require("./routes/polls-vote");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
+// app.use("/polls", pollsRoutes(db));
 app.use("/polls", pollsRoutes(db,mailgun));
 app.use("/polls", pollsVoteRoute(db));
 // Note: mount other resources here, using the same pattern above
