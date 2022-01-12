@@ -29,10 +29,10 @@
   <main>
     <% for(let poll of polls) { %>
       <div class="polls">
-        <span><%=poll.title%>:</span>
+        <span><%=poll.title%></span>
         <span><%=poll.description%></span>
-        <a href="/">Submission Link</a>
-        <a href="/">Delete</a>
+        <a href="/polls/<%=poll.id%>/results">Results</a>
+        <a href="/polls/<%=poll.id%>/delete"> Delete</a>
       </div>
     <% } %>
     <!-- <div class="polls">

@@ -3,7 +3,7 @@
 
 <head>
   <title>Home Page</title>
-  <!-- For Moble Users-->
+  <!-- For Mobile Users-->
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
   <!-- we  a CSS reset style sheet -->
@@ -21,6 +21,7 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/poll-create.js"></script>
 </head>
 
 <body>
@@ -28,54 +29,65 @@
 
   <main>
     <form class="polls-form" id="polls-form" action="/polls" method="POST">
+
+      <div class= "poll-form-item">
+        <label>Name</label>
+        <textarea class="form-textarea" name="name"   placeholder="Your name"></textarea>
+      </div>
+
       <div class= "poll-form-item">
         <label>Email</label>
-        <textarea class="form-textarea" name="email"   placeholder="Enter your email"></textarea>
+        <textarea class="form-textarea" name="email"   placeholder="Your email"></textarea>
       </div>
 
       <div class= "poll-form-item">
         <label>Poll Title</label>
-        <textarea class="form-textarea" name="pollTitle"    placeholder="Enter pool title"></textarea>
+        <textarea class="form-textarea" name="pollTitle"    placeholder="Your Question"></textarea>
       </div>
 
       <div class= "poll-form-item">
-        <label>Poll Description</label>
-        <textarea  class="form-textarea" name="description"    placeholder="Enter poll description"></textarea>
+        <label>Final date to vote:</label>
+        <input type="date" name="date">
       </div>
 
       <div class="poll-form-options" id="options">
       <div class= "poll-form-item">
         <label>option 1</option></option></label>
-        <textarea  class="form-textarea" name="label1"   placeholder="Pool Item 1"></textarea>
+        <textarea  class="form-textarea" name="label"   placeholder="Option "></textarea>
       </div>
+
       <div class= "poll-form-item">
         <label>option 1 description</option></option></label>
-        <textarea  class="form-textarea"  name="labelDescription1"   placeholder="Pool Description 1"></textarea>
+        <textarea  class="form-textarea"  name="labelDescription"   placeholder="Description"></textarea>
       </div>
+
       <div class= "poll-form-item">
         <label>option 2</label>
-        <textarea  class="form-textarea"  name="label2"   placeholder="Pool Item 2"></textarea>
+        <textarea  class="form-textarea"  name="label"   placeholder="Option"></textarea>
       </div>
       <div class= "poll-form-item">
         <label>option 2 description</option></option></label>
-        <textarea  class="form-textarea"  name="labelDescription2"   placeholder="Pool Description 2"></textarea>
+        <textarea  class="form-textarea"  name="labelDescription"   placeholder="Description"></textarea>
       </div>
       <div class= "poll-form-item">
         <label>option 3</label>
-        <textarea  class="form-textarea" name="label3"   placeholder="Pool Item 3"></textarea>
+        <textarea  class="form-textarea" name="label"   placeholder="Option "></textarea>
       </div>
+
       <div class= "poll-form-item">
         <label>option 3 description</option></option></label>
-        <textarea  class="form-textarea"  name="labelDescription3"   placeholder="Pool Description 3"></textarea>
+        <textarea  class="form-textarea"  name="labelDescription"   placeholder="Description"></textarea>
       </div>
-    </div>
-      <div class= "poll-form-item">
-        <button id="form-add-button" class="center pool-form-button" type="?">add option</button>
-      </div>
-      <div class="poll-form-item" center>
-        <button id="form-submit-button" class="center pool-form-button" type="submit">Submit</button>
-      </div>
+
+      <form action="" method="post">
+        <div class="input_fields_wrap">
+          <button class="add_field_button">Add More Options</button>
+        </div>
+      </form>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+  </div>
 
   </main>
 
