@@ -1,6 +1,7 @@
 .vote-labels {
   display: flex;
   justify-content: space-around;
+  margin-top: 1em;
 }
 
 .vote-form {
@@ -15,20 +16,22 @@
   justify-content: space-between;
   flex-basis: 100%;
   flex-grow: 1;
-  margin: 1em 0 3em 0;
+  margin: 0 0 3em 0;
 }
 
 .vote-options, .rank-options {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-basis: 100%;
   flex-grow: 1;
-  padding: 3em;
+  padding: 2em;
 }
 
 .rank-options {
   background-color: aquamarine;
+  border: 5px dashed goldenrod;
+  border-radius: 0.3em;
 }
 
 .vote-items, .rank-items {
@@ -38,6 +41,8 @@
   margin: 1em 0;
   background-color: coral;
   padding: 1em;
+  border-radius: 0.3em;
+  font-size: 1rem;
 }
 
 .vote-error {
