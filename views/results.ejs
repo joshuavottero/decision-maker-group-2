@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Results for <%= options[0].title %></title>
   <!-- For Mobile Users-->
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
@@ -18,31 +18,62 @@
 
   <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+  <script type = "text/javascript">
+    google.charts.load('current', {packages: ['corechart']});
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/results.js"></script>
+  <script language="Javascript">
+    const drawChart = function() {
+    const data = new google.visualization.DataTable();
+      data.addColumn('string', 'Choices');
+      data.addColumn('number', 'Points');
+
+      <% for (const option of options) { %>
+      data.addRows([
+        [<%- JSON.stringify(option.fullLabel) %>, <%- JSON.stringify(option.points) %>],
+      ]);
+      <% } %>
+
+      const options = {
+      // 'title': 'Total Points for <%- JSON.stringify(options[0].title) %>, 2014',
+      // 'width': 1000,
+      // 'height': 1000,
+      'pieHole': 0.4,
+      'is3D': true,
+      'backgroundColor': 'none',
+      'fontName': 'monospace',
+      'fontColor': 'white',
+      // 'colors': ['#96CEB4', '#FFEEAD', '#D9534F', '#FFAD60'],
+      'colors': ['#FF008E', '#D22779', '#612897', '#0C1E7F']
+      };
+
+      const pieChart = new google.visualization.PieChart(document.getElementById('pie-chart-container'));
+      const barChart = new google.visualization.BarChart(document.getElementById('bar-chart-container'));
+      pieChart.draw(data, options);
+      barChart.draw(data, options);
+    }
+    google.charts.setOnLoadCallback(drawChart);
+  </script>
 </head>
 
 <body>
   <%- include('partials/_header') %>
 
   <main>
-    <div class="results">
+    <section id="results">
+      <h3>Final Results for "<%= options[0].title %>":</h3>
+      <h4>"<%= options[0].label %>" WINS with <%= options[0].points %> points!</h4>
+      <div id="pie-chart-container"></div>
+      <div id="bar-chart-container"></div>
+      <h4>Total Votes Cast: <%= totalVotes %></h4>
+      <h4>Total Points: <%= totalPoints %></h4>
+    </section>
 
-      <!-- all option. titles and description are the same -->
-      <span><%=options[0].title%></span>
-      <span><%=options[0].description%></span>
-
-      <% for(const option of options) { %>
-        <div class="results-item">
-          <span><%=options.indexOf(option) + 1%> place</span>
-          <span><%=option.label%></span>
-          <span><%=option.label_description%></span>
-          <span>Score: <%=option.points%></span>
-        </div>
-      <% } %>
-      <a class="results-link" href="/polls">Check other polls</a>
-    </div>
   </main>
 </body>
 
