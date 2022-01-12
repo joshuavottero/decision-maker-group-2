@@ -13,7 +13,7 @@ const router  = express.Router();
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-    db.query (`SELECT * FROM polls WHERE creator_id=$1`, [req.session.user_id])
+    db.query (`SELECT *, to_char (description, 'mm-dd-yyyy') AS description FROM polls WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
       const templateVars = { polls };
@@ -76,7 +76,7 @@ module.exports = (db, mailgun) => {
   router.post('/', async (req, res) => {
     let creatorId = -1;
     let pollId;
-
+console.log(req.body);
     // select users by email
     // if exists set creatorId as res.rows.id
     await db.query(`SELECT * FROM users WHERE email=$1`, [req.body.email])
