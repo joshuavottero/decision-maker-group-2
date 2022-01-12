@@ -52,8 +52,10 @@
       'colors': ['#FF008E', '#D22779', '#612897', '#0C1E7F']
       };
 
-      const chart = new google.visualization.PieChart(document.getElementById('chart-container'));
-      chart.draw(data, options);
+      const pieChart = new google.visualization.PieChart(document.getElementById('pie-chart-container'));
+      const barChart = new google.visualization.BarChart(document.getElementById('bar-chart-container'));
+      pieChart.draw(data, options);
+      barChart.draw(data, options);
     }
     google.charts.setOnLoadCallback(drawChart);
   </script>
@@ -65,7 +67,9 @@
   <main>
     <section id="results">
       <h3>Final Results for "<%= options[0].title %>"</h3>
-      <div id="chart-container"></div>
+      <div id="pie-chart-container"></div>
+      <div id="bar-chart-container"></div>
+      <h4>Total Votes Cast: <%= totalPoints / (options.length + 1) %></h4>
       <h4>Total Points: <%= totalPoints %></h4>
     </section>
 
