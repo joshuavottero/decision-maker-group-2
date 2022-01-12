@@ -7,14 +7,18 @@ module.exports = (db) => {
     const pollId = req.params.id;
 
     db.query (`
-    SELECT title, description, options.*
+    SELECT title, description, users.name AS name, options.*
     FROM polls
     JOIN options ON polls.id = poll_id
-    WHERE poll_id = $1;
+    JOIN users ON users.id = creator_id
+    WHERE poll_id = $1
+    ORDER BY options.id;
     `, [pollId])
     .then(data => {
       const poll = data.rows;
+
       const templateVars = { poll };
+      console.log(poll);
 
       res.render('vote', templateVars);
     })
