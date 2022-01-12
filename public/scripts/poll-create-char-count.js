@@ -1,6 +1,7 @@
 (function($) {
   $(document).ready(() => {
     $(".form-textarea").on("input", onInput);
+    console.log("hello world");
   });
 
   const onInput = function(){
@@ -9,7 +10,7 @@
     const length = $input.val().length;
     const charLeft = 20 - length;
 
-    const $form =  $input.closest("form");
+    const $form =  $input.parent();
     const $counter = $form.find(".counter");
     $counter.html(charLeft);
 
