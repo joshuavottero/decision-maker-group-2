@@ -2,25 +2,27 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
-  <!-- For Moble Users-->
+  <title><%= poll[0].title %></title>
+
+  <!-- For Mobile Users-->
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
-  <!-- we  a CSS reset style sheet -->
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
 
-  <!-- <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" /> -->
-  <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
-  <!-- <link rel="stylesheet" href="/styles/main.css" type="text/css" /> -->
+  <!-- App CSS -->
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/vote.css" type="text/css" />
 
-  <!-- App CSS -->
-  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css"/> -->
-
+  <!-- External JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/vote.js"></script>
 </head>
 
 <body>
@@ -28,30 +30,29 @@
 
   <main>
 
-    <div>
-      <span>Pool title</span>
+    <h2><%= poll[0].title %></h2>
+    <h3><%= poll[0].description %></h3>
+    <h4>Drag and drop each option to the right side in order of your preference!</h4>
+    <form class="reset-button" method="GET" action="/polls/<%= poll[0].id %>">
+      <button type="submit" name="reset">Reset</button>
+    </form>
+    <div class="vote-labels">
+      <h4>Choices</h4>
+      <h4>Ranks</h4>
     </div>
-    <div>
-      <span>Poll description</span>
-    </div>
-    <form class="form-vote-items" class="polls-form" method="POST">
-      <div class="form-vote-item">
-        <label>option 1</label>
-        <label>rank 1</label>
+    <form class="vote-form" method="POST">
+      <div class="vote-ranking">
+        <div class="vote-options">
+        <% for (const pollOption of poll) { %>
+          <div class="vote-items" id="draggable-<%= poll.indexOf(pollOption) + 1 %>"
+          draggable="true">
+            <label><%= pollOption.label %><br><%= pollOption.label_description %></label>
+          </div>
+        <% } %>
+        </div>
+        <div class="rank-options"></div>
       </div>
-      <div class="form-vote-item">
-        <span>description</span>
-        <span id="item-rank1" class="rank-border"></span>
-      </div>
-      <div class="form-vote-item">
-        <label>option 2</label>
-        <label>rank 2</label>
-      </div>
-      <div class="form-vote-item">
-        <span>description</span>
-        <span id="item-rank2" class="rank-border"></span>
-      </div>
-      <button id="form-submit-button" class="center form-vote-button form-vote-item" type="?">Reset</button>
+      <input id="vote-input" type="text" name="vote">
       <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit</button>
     </form>
   </main>
