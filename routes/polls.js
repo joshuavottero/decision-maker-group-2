@@ -1,9 +1,10 @@
 /*
- * All routes for Widgets are defined here
- * Since this file is loaded in server.js into api/widgets,
- *   these routes are mounted onto /widgets
+ * All routes for Polls are defined here
+ * Since this file is loaded in server.js into api/polls,
+ *   these routes are mounted onto /polls
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
+
 
 const { Template } = require('ejs');
 const express = require('express');
@@ -12,18 +13,21 @@ const router  = express.Router();
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-    db.query (`SELECT * FROM polls WHERE creator_id=$1;`, [1])
+    db.query (`SELECT * FROM polls WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
       const templateVars = { polls };
+      console.log(data.rows);
+      // console.log(templateVars);
+      return res.render('polls', templateVars);
 
-      res.render('polls', templateVars);
-    })
-    .catch(err => {
-      res
-      .status(500)
-      .json({ error: err.message });
-    });
+
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
   });
 
   router.get('/new', (req, res) => {
@@ -116,36 +120,42 @@ module.exports = (db, mailgun) => {
 
             // add options
             // the creator can add more several options. Add all options using for loop
-              for (const option of req.body.options) {
-                let valuesOptions = [pollId, option.label, option.labelDescription]
-                db.query(`INSERT INTO options (poll_id, label, label_description) VALUES ($1,$2,$3) RETURNING *;`, valuesOptions)
-                  .catch(err => {
-                    res
-                  .status(504)
-                  .json({ error: err.message });
-                  });
-              }
+            let arrLabels = Object.values(req.body).splice(4);
+              for (let i= 0; i < arrLabels[0].length; i++) {
+                let valuesOptions = [pollId, arrLabels[0][i], arrLabels[1][i]];
+                await db.query(`INSERT INTO options (poll_id, label, label_description) VALUES ($1, $2, $3)`, valuesOptions)
+              .catch(err => {
+                 res
+                 .status(504)
+                 .json({ error: err.message });
+                 });
+               }
 
-      // // send emails
-      // const emailData = {
-      // "from": `test@sandbox69151c28390c4cadbc23a0d1cb8d2b2c.mailgun.org`,
-      // "to": req.body.email,
-      // "subject": req.body.pollTitle,
-      // "text": `http://localhost:8080/polls/${pollId} to vote
-      //  and http://localhost:8080/polls/${pollId}/results to results`
-      // };
+      // send emails
+      const emailData = {
+      "from":'DECISION MAKER <me@samples.mailgun.org>',
+      "to": req.body.email,
+      "subject": req.body.pollTitle,
+      "text": `Hello, ${req.body.name}!
+      Vote by ${req.body.date}
+      To vote: http://localhost:8080/polls/${pollId}.
+      To check the results: http://localhost:8080/polls/${pollId}/results.
 
-      // mailgun.messages().send(emailData, (error, body) => {
-      //   if(error) console.log(error)
-      //   else console.log(body);
-      // });
+            Thanks for using DECISION MAKER!`
+      };
+
+      mailgun.messages().send(emailData, (error, body) => {
+        if(error) console.log(error)
+        else console.log(body);
+      });
 
     res.cookie('user_id', creatorId);
     req.session.user_id = creatorId;
     res.redirect('/polls');
     });
 
-  router.post('/:id/delete', (req, res) => {
+
+  router.get('/:id/delete', (req, res) => {
     db.query (`DELETE FROM polls WHERE creator_id=$1 AND id=$2`, [req.session.user_id, req.params.id])
     .then(data => {
         res.redirect('/polls');
