@@ -31,8 +31,8 @@
   <main>
 
     <h2><%= poll[0].title %></h2>
-    <h3><%= poll[0].description %></h3>
-    <h4>Drag and drop each option to the right side in order of your preference!</h4>
+    <h3>Poll created by: <%= poll[0].name %></h3>
+    <p>Drag and drop each option to the right side in order of your preference!</p>
     <form class="reset-button" method="GET" action="/polls/<%= poll[0].id %>">
       <button type="submit" name="reset">Reset</button>
     </form>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+
+  <!-- For Mobile Users-->
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/poll-create.css" type="text/css" />
+
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/poll-create-char-count.js"></script>
+</head>
+
+<body>
+  <%- include('partials/_header') %>
+
+  <main>
+    <form class="polls-form" id="polls-form" action="/polls" method="POST">
+      <div class= "poll-form-item">
+        <label>Email</label>
+        <textarea class="form-textarea" id="poll-form-text" name="email"  placeholder="Enter your email"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+
+      <div class= "poll-form-item">
+        <label>Poll Title</label>
+        <textarea class="form-textarea" name="pollTitle"    placeholder="Enter pool title"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+
+      <div class= "poll-form-item">
+        <label>Poll Description</label>
+        <textarea  class="form-textarea" name="description"    placeholder="Enter poll description"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+
+      <div class="poll-form-options" id="options">
+      <div class= "poll-form-item">
+        <label>option 1</option></option></label>
+        <textarea  class="form-textarea" name="label1"   placeholder="Pool Item 1"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+      <div class= "poll-form-item">
+        <label>option 1 description</option></option></label>
+        <textarea  class="form-textarea"  name="labelDescription1"   placeholder="Pool Description 1"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+      <div class= "poll-form-item">
+        <label>option 2</label>
+        <textarea  class="form-textarea"  name="label2"   placeholder="Pool Item 2"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+      <div class= "poll-form-item">
+        <label>option 2 description</option></option></label>
+        <textarea  class="form-textarea"  name="labelDescription2"   placeholder="Pool Description 2"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+      <div class= "poll-form-item">
+        <label>option 3</label>
+        <textarea  class="form-textarea" name="label3"   placeholder="Pool Item 3"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+      <div class= "poll-form-item">
+        <label>option 3 description</option></option></label>
+        <textarea  class="form-textarea"  name="labelDescription3"   placeholder="Pool Description 3"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
+      </div>
+    </div>
+      <div class= "poll-form-item">
+        <button id="form-add-button" class="center pool-form-button" type="?">add option</button>
+      </div>
+      <div class="poll-form-item" center>
+        <button id="form-submit-button" class="center pool-form-button" type="submit">Submit</button>
+      </div>
+    </form>
+
+  </main>
+
+</body>
+
+</html>
