@@ -40,7 +40,13 @@ module.exports = (db, mailgun) => {
       ORDER BY options.points DESC`, [req.params.id])
     .then(data => {
       const options = data.rows;
-      const templateVars = { options };
+      let totalPoints = 0;
+
+      for (const option of options) {
+        totalPoints += Number(option.points);
+      }
+
+      const templateVars = { options, totalPoints };
       console.log(templateVars);
       return res.render('results', templateVars);
     })
