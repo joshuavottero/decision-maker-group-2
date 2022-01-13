@@ -20,7 +20,6 @@ module.exports = (db, mailgun) => {
     WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
-      console.log(polls);
       const templateVars = { polls };
 
       return res.render('polls', templateVars);
