@@ -132,7 +132,7 @@ $(document).ready(function() {
     }
     else {
       const formData = $(this).serialize();
-      $.ajax("/polls/", {data: formData, method: "POST"})
+      $.ajax("/polls", {data: formData, method: "POST"})
     }
 
     //Serialize data from form
