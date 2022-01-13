@@ -31,8 +31,12 @@
 <body>
   <%- include('partials/_header') %>
   <main>
+    <% if (polls[0].name) { %>
+    <span class="creator"><%= polls[0].name %> (<%= polls[0].email%>)</span>
+    <% } else { %>
     <span class="creator"><%= polls[0].email%></span>
-          <% for(let poll of polls) { %>
+    <% } %>
+      <% for(let poll of polls) { %>
       <table class="polls">
         <tr>
 

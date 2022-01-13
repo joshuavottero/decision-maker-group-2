@@ -31,7 +31,7 @@
 // Mobile screens
 @media only screen and (max-width: 768px),
             screen and (max-height: 768px) {
-  body {
+  body, ::placeholder, input {
     font-size: 18px;
   }
 }
