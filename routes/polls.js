@@ -175,33 +175,18 @@ module.exports = (db, mailgun) => {
                  });
                }
 
-//       // send emails
-//       const emailData = {
-//       from:'DECISION MAKER <me@samples.mailgun.org>',
-//       to: req.body.email,
-//       subject: `Poll: ${req.body.pollTitle}`,
-//       html:`<html> Hello, ${req.body.name}!
-// <br>
-//       <a href="${vote_link}">Vote Here by ${descriptionDate}</a>
-//         <br><br>
-//       <a href="${result_link}">Results </a>
+      // send emails
+    let emailHTML = mailgunHelperFunction.sendEmail(req.body.email, req.body.pollTitle, req.body.name, vote_link, result_link, descriptionDate);
 
-// <br>
-
-// Thanks for using Decision Maker!
-// </html>`
-//       };
-      let emailHTML = mailgunHelperFunction.sendEmail(req.body.email, req.body.pollTitle, req.body.name, vote_link, result_link, descriptionDate);
-      mailgun.messages().send(emailHTML, (error, body) => {
-        if(error) console.log(error)
-        else console.log(body);
-      });
+    mailgun.messages().send(emailHTML, (error, body) => {
+      if(error) console.log(error)
+      else console.log(body);
+    });
 
     res.cookie('user_id', creatorId);
     req.session.user_id = creatorId;
     res.redirect('/polls');
     });
-
 
   router.get('/:id/delete', (req, res) => {
     db.query (`DELETE FROM polls WHERE creator_id=$1 AND id=$2`, [req.session.user_id, req.params.id])
