@@ -1,7 +1,6 @@
 (function($) {
   $(document).ready(() => {
     $(".form-textarea").on("input", onInput);
-    console.log("hello world");
   });
 
   const onInput = function(){
