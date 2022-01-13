@@ -1,9 +1,37 @@
+.polls-form {
+  margin: 2em 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.polls-form p {
+  font-size: 20px;
+}
+
 .poll-form-item {
   font-size: 20px;
+  margin: 0.5em;
+  display: flex;
+  align-items: center;
+}
 
+.poll-form-item label {
+  padding: 0.5em;
 }
 
 .form-textarea {
   width: 80%;
-  height:auto
+  height: auto;
+}
+
+.btn {
+  margin: 1em;
+}
+
+// Mobile screens
+@media only screen and (max-width: 768px),
+            screen and (max-height: 768px) {
+  body, ::placeholder, input {
+    font-size: 18px;
+  }
 }

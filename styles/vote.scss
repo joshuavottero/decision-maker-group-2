@@ -2,6 +2,10 @@
   margin: 2em 0 0 0;
 }
 
+#reset-button button {
+  padding: 0.3em;
+}
+
 .vote-labels {
   margin: 0 1em 0 0;
 }
@@ -27,7 +31,7 @@
 .vote-options, .rank-options {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-basis: 100%;
   flex-grow: 1;
   padding: 2em;
@@ -35,7 +39,7 @@
 
 .rank-options {
   background-color: aquamarine;
-  border: 5px dashed goldenrod;
+  border: 5px dashed #FF008E;
   border-radius: 0.3em;
   margin-right: 1em;
 }
@@ -44,8 +48,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 1em 0;
-  background-color: coral;
+  margin: 1.5em 0;
+  background-color: #FF008E;
   padding: 1em;
   border-radius: 0.3em;
   font-size: 1rem;
@@ -60,12 +64,32 @@
 #form-submit-button {
   margin: 1.5em 0;
   align-self: center;
+  padding: 0.3em;
 }
 
 #submit-alert {
-  align-self: center;
   background-color: hotpink;
   padding: 1em;
-  border-radius: 0.3em;
   margin: 0;
+}
+
+#instructions {
+  margin: 0 1em;
+  line-height: 1.5em;
+}
+
+// Mobile screens
+@media only screen and (max-width: 768px),
+            screen and (max-height: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .vote-items, .rank-items {
+    margin: 0.5em 0.2em;
+  }
+
+  .vote-options, .rank-options {
+    padding: 2em 1em;
+  }
 }

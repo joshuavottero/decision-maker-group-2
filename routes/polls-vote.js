@@ -26,7 +26,6 @@ module.exports = (db) => {
       }
 
       const templateVars = { poll };
-      console.log(poll);
 
       res.render('vote', templateVars);
     })
@@ -67,8 +66,6 @@ module.exports = (db) => {
           .json({ error: err.message });
         });
       }
-
-      // res.redirect('/');
     })
     .catch(err => {
       res
