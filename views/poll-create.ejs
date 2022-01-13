@@ -22,6 +22,7 @@
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/poll-create.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/poll-create-char-count.js"></script> -->
 </head>
 
 <body>
@@ -32,17 +33,23 @@
 
       <div class= "poll-form-item">
         <label>Name</label>
-        <textarea class="form-textarea" name="name"   placeholder="Your name"></textarea>
+        <textarea class="form-textarea" name="name" placeholder="Your name"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <div class= "poll-form-item">
         <label>Email</label>
         <textarea class="form-textarea" name="email"   placeholder="Your email"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <div class= "poll-form-item">
         <label>Poll Title</label>
         <textarea class="form-textarea" name="pollTitle"    placeholder="Your Question"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <div class= "poll-form-item">
@@ -54,29 +61,41 @@
       <div class= "poll-form-item">
         <label>option 1</option></option></label>
         <textarea  class="form-textarea" name="label"   placeholder="Option "></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <div class= "poll-form-item">
         <label>option 1 description</option></option></label>
         <textarea  class="form-textarea"  name="labelDescription"   placeholder="Description"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <div class= "poll-form-item">
         <label>option 2</label>
         <textarea  class="form-textarea"  name="label"   placeholder="Option"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
       <div class= "poll-form-item">
         <label>option 2 description</option></option></label>
         <textarea  class="form-textarea"  name="labelDescription"   placeholder="Description"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
       <div class= "poll-form-item">
         <label>option 3</label>
         <textarea  class="form-textarea" name="label"   placeholder="Option "></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <div class= "poll-form-item">
         <label>option 3 description</option></option></label>
         <textarea  class="form-textarea"  name="labelDescription"   placeholder="Description"></textarea>
+        <span >characters remaining</span>
+        <output name="counter" class="counter" for="poll-form-text">20</output>
       </div>
 
       <form action="" method="post">
@@ -84,7 +103,6 @@
           <button class="add_field_button">Add More Options</button>
         </div>
       </form>
-
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>

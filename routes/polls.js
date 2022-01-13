@@ -31,7 +31,6 @@ module.exports = (db, mailgun) => {
   });
 
   router.get('/new', (req, res) => {
-    //res.render('poll-create');
     res.render('poll-create');
   });
 
