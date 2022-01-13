@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"  />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -89,14 +90,13 @@
     <section id="results">
       <h2 id="results-title">Final Results for "<%= options[0].title %>"</h2>
       <% for (let i = 0; i < options.length; i++) { %>
-        <% if (i === 1 && options[0].points === options[i].points) { %>
+        <% if (i === 1 && options[0].points === 0) { %>
+          <h3 class="print-winner">Nobody's voted yet... <i class="fa-solid fa-face-sad-cry"></i><br>Tell your friends to hurry up and vote!</h3>
+        <% } else if (i === 1 && options[0].points === options[i].points) { %>
       <h3 class="print-winner">Looks like we've got a TIE!<br>The winners each have <%= options[0].points %> points.</h3>
         <% } else if (i === 1 && options[0].points !== options[i].points) { %>
       <h3 class="print-winner">"<%= options[0].label %>" WINS with <%= options[0].points %> points!</h3>
         <% } %>
-      <% } %>
-      <% if (options[0].points === 0) { %>
-      <h3 class="print-winner">Nobody's voted yet! Tell your friends to hurry up and vote!</h3>
       <% } %>
       <div id="pie-chart-container"></div>
       <div id="bar-chart-container"></div>

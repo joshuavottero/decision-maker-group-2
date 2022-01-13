@@ -56,6 +56,7 @@ $(document).ready(function() {
 
     if ($voteItems.length <= 0) {
       $('p.vote-error').hide();
+      $('button#form-submit-button').hide();
 
       $('<p>', {
         id: 'submit-alert',
