@@ -9,6 +9,9 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- App CSS -->
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
@@ -40,16 +43,31 @@
       <% } %>
 
       const options = {
-      // 'title': 'Total Points for <%- JSON.stringify(options[0].title) %>, 2014',
-      // 'width': 1000,
-      // 'height': 1000,
-      'pieHole': 0.4,
       'is3D': true,
       'backgroundColor': 'none',
-      'fontName': 'monospace',
-      'fontColor': 'white',
-      // 'colors': ['#96CEB4', '#FFEEAD', '#D9534F', '#FFAD60'],
-      'colors': ['#FF008E', '#D22779', '#612897', '#0C1E7F']
+      'fontName': 'Dosis',
+      'legend': {
+        'textStyle': {
+            'color': 'white'
+        }
+      },
+      'hAxis': {
+        'textStyle': {
+            'color': 'white'
+        },
+        'titleTextStyle': {
+            'color': 'white'
+        }
+      },
+      'vAxis': {
+        'textStyle': {
+            'color': 'white'
+        },
+        'titleTextStyle': {
+            'color': 'white'
+        }
+      },
+      'colors': ['#FF008E', '#D22779', '#612897', '#0C1E7F', '#6867AC', '#A267AC', '#CE7BB0', '#FFBCD1'],
       };
 
       const pieChart = new google.visualization.PieChart(document.getElementById('pie-chart-container'));
@@ -67,11 +85,20 @@
   <main>
     <section id="results">
       <h3>Final Results for "<%= options[0].title %>":</h3>
+      <% for (let i = 0; i < options.length; i++) { %>
+        <% if (i === 1 && options[0].points === options[i].points) { %>
+      <h4>Looks like we've got a TIE!<br>The winners each have <%= options[0].points %> points.</h4>
+        <% } else if (i === 1 && options[0].points !== options[i].points) { %>
       <h4>"<%= options[0].label %>" WINS with <%= options[0].points %> points!</h4>
+        <% } %>
+      <% } %>
       <div id="pie-chart-container"></div>
       <div id="bar-chart-container"></div>
-      <h4>Total Votes Cast: <%= totalVotes %></h4>
+      <h4>Total Votes: <%= totalVotes %></h4>
       <h4>Total Points: <%= totalPoints %></h4>
+      <p>Results are calculated using the <a href="https://study.com/academy/lesson/the-borda-count-method-in-elections.html">Borda Count Method</a>.</p>
+      <p>Poll expires on: <%= (new Date(options[0].description)).toDateString() %></p>
+      <p>Created by: <%= options[0].userInfo %></p>
     </section>
 
   </main>
