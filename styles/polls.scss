@@ -24,6 +24,7 @@
 }
 
 .creator {
+  margin: 2em;
   align-self: center;
   font-size: 30px;
 }
@@ -43,3 +44,10 @@
 //   min-width: 10%;
 // }
 
+// Mobile screens
+@media only screen and (max-width: 768px),
+            screen and (max-height: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
