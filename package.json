@@ -8,7 +8,7 @@
     "start": "node server.js",
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js",
-    "sass-watch": "sass style:public/styles --watch --poll --no-source-map"
+    "sass-watch": "sass styles:public/styles --watch --poll --no-source-map"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -26,7 +26,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.5.0",
     "pg-native": "^3.0.0",
-    "sass": "^1.35.1"
+    "sass": "^1.47.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.10"
