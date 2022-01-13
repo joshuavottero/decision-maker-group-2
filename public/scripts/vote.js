@@ -42,7 +42,25 @@ $(document).ready(function() {
       $('<p>', {
         class: 'vote-error',
         text: 'Please rank all options'
-      }).appendTo('form#reset-button');
+      }).insertAfter('div.vote-ranking');
+    }
+  });
+
+  $(document).on('submit', 'form.vote-form', function(event){
+    const $voteItems = $('div.vote-options').find('div.vote-items');
+
+    if ($voteItems.length <= 0) {
+      $('p.vote-error').hide();
+
+      $('<p>', {
+        id: 'submit-alert',
+        text: 'Thanks for voting!'
+      }).insertAfter('div.vote-ranking');
+
+
+      setTimeout(function() {
+        window.location.href = '/polls';
+      }, 3000);
     }
   });
 

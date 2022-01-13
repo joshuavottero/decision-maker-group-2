@@ -3,14 +3,16 @@
 }
 
 .vote-labels {
+  margin: 0 1em 0 0;
+}
+
+.vote-labels, .vote-form {
   display: flex;
   justify-content: space-around;
 }
 
 .vote-form {
-  display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .vote-ranking {
@@ -19,7 +21,7 @@
   justify-content: space-between;
   flex-basis: 100%;
   flex-grow: 1;
-  margin: 0 0 3em 0;
+  margin: 0 0 2em 0;
 }
 
 .vote-options, .rank-options {
@@ -35,6 +37,7 @@
   background-color: aquamarine;
   border: 5px dashed goldenrod;
   border-radius: 0.3em;
+  margin-right: 1em;
 }
 
 .vote-items, .rank-items {
@@ -50,10 +53,19 @@
 
 .vote-error {
   padding: 1em;
+  margin: 0;
   background-color: crimson;
 }
 
 #form-submit-button {
-  margin-bottom: 2em;
+  margin: 1.5em 0;
   align-self: center;
+}
+
+#submit-alert {
+  align-self: center;
+  background-color: hotpink;
+  padding: 1em;
+  border-radius: 0.3em;
+  margin: 0;
 }

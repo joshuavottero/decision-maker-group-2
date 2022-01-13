@@ -68,7 +68,7 @@ module.exports = (db) => {
         });
       }
 
-      res.redirect('/');
+      // res.redirect('/');
     })
     .catch(err => {
       res
