@@ -13,10 +13,10 @@ $(document).ready(function() {
           $(wrapper).append(`
             <div class="input-group mb-3">
               <div class="input-group-append poll-form-item">
-                Option * <input placeholder="Enter Option" type="text" name="label" id="option" class="form-control form-textarea poll-form-option"><span >characters remaining</span> <output name="counter" class="counter" for="poll-form-text">20</output>
+                Option * <input placeholder="Enter Option" type="text" name="label" id="option" class="form-control form-textarea poll-form-option"><span >characters remaining</span> <output name="counter" class="counter" for="poll-form-text">100</output>
               </div>
               <div class="input-group-append poll-form-item">
-                Description <input placeholder="Enter Description" type="text" name="labelDescription" class="form-control form-textarea poll-form-option-description"> <span >characters remaining</span> <output name="counter" class="counter" for="poll-form-text">20</output>
+                Description <input placeholder="Enter Description" type="text" name="labelDescription" class="form-control form-textarea poll-form-option-description"> <span >characters remaining</span> <output name="counter" class="counter" for="poll-form-text">100</output>
               </div>
               <div class="input-group-append">
                 <button class="btn btn-outline-danger remove_field" type="button">Remove Option/Description</button>\
@@ -30,7 +30,7 @@ $(document).ready(function() {
   const onInput = function() {
     const $input = $(this);
     const length = $input.val().length;
-    const charLeft = 20 - length;
+    const charLeft = 100 - length;
 
     const $form =  $input.parent();
     const $counter = $form.find(".counter");
@@ -52,13 +52,14 @@ $(document).ready(function() {
 
   const $form = $('#polls-form');
   $form.submit(function( event ) {
+    console.log("hi");
     // $(".error").css("display", "none");
 
     event.preventDefault();
 
 
 
-    const maxCharLength = 20;
+    const maxCharLength = 100;
     let error = "";
 
 
@@ -132,7 +133,8 @@ $(document).ready(function() {
     }
     else {
       const formData = $(this).serialize();
-      $.ajax("/polls", {data: formData, method: "POST"})
+      alert("poll has been made");
+      $.ajax("/polls/", {data: formData, method: "POST"})
     }
 
     //Serialize data from form
