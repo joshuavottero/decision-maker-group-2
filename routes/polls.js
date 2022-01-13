@@ -13,12 +13,11 @@ const router  = express.Router();
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-    db.query (`SELECT *, to_char (description, 'mm-dd-yyyy') AS description FROM polls WHERE creator_id=$1`, [req.session.user_id])
+    db.query (`SELECT *, to_char (description, 'dd-mm-yyyy') AS description FROM polls WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
       const templateVars = { polls };
-      console.log(data.rows);
-      // console.log(templateVars);
+
       return res.render('polls', templateVars);
 
 
@@ -59,7 +58,7 @@ module.exports = (db, mailgun) => {
         (options.length * (options.length / 2)) + (options.length - (options.length / 2))
         );
       const templateVars = { options, totalPoints, totalVotes };
-      console.log(templateVars);
+
       return res.render('results', templateVars);
     })
     .catch(err => {
@@ -76,7 +75,10 @@ module.exports = (db, mailgun) => {
   router.post('/', async (req, res) => {
     let creatorId = -1;
     let pollId;
-console.log(req.body);
+    let descriptionDate;
+    let vote_link;
+    let result_link;
+
     // select users by email
     // if exists set creatorId as res.rows.id
     await db.query(`SELECT * FROM users WHERE email=$1`, [req.body.email])
@@ -112,22 +114,45 @@ console.log(req.body);
           .then(data => {
             pollId = data.rows[0].id;
           })
+          await db.query(`SELECT to_char(description, 'dd-mm-yyyy') AS description FROM polls WHERE id = ${pollId}`)
+          .then (data => {
+            descriptionDate = data.rows[0].description;
+          })
           .catch(err => {
-              res
+            res
             .status(502)
             .json({ error: err.message });
-            })
+          })
+          .catch(err => {
+            res
+            .status(502)
+            .json({ error: err.message });
+          })
 
-         // add id to links UPDATE poll table - only vote_link and result_link
-           db.query(`UPDATE polls SET vote_link = $1, result_link=$2 WHERE polls.id = $3`,[`http://localhost:8080/polls/${pollId}`, `http://localhost:8080/polls/${pollId}/results`, pollId])
-            .catch(err => {
-                res
-                .status(503)
-                .json({ error: err.message });
-              });
 
-            // add options
-            // the creator can add more several options. Add all options using for loop
+          // add id to links UPDATE poll table - only vote_link and result_link
+         await db.query(`UPDATE polls SET vote_link = $1, result_link=$2 WHERE polls.id = $3`,[`http://localhost:8080/polls/${pollId}`, `http://localhost:8080/polls/${pollId}/results`, pollId])
+          .then (data => {
+          return  db.query(`SELECT * FROM polls WHERE id = ${pollId}`)
+            .then(data => {
+            vote_link = data.rows[0].vote_link;
+            result_link = data.rows[0].result_link;
+
+          })
+          .catch (err => {
+            res
+            .status(503)
+            .json({ error: err.message });});
+
+          })
+          .catch(err => {
+            res
+            .status(503)
+            .json({ error: err.message });
+          });
+
+          // add options
+          // the creator can add more several options. Add all options using for loop
             let arrLabels = Object.values(req.body).splice(4);
               for (let i= 0; i < arrLabels[0].length; i++) {
                 let valuesOptions = [pollId, arrLabels[0][i], arrLabels[1][i]];
@@ -143,19 +168,17 @@ console.log(req.body);
       const emailData = {
       from:'DECISION MAKER <me@samples.mailgun.org>',
       to: req.body.email,
-      subject: req.body.pollTitle,
-      html:`Hello, ${req.body.name}!
+      subject: `Poll: ${req.body.pollTitle}`,
+      html:`<html> Hello, ${req.body.name}!
+<br>
+      <a href="${vote_link}">Vote Here by ${descriptionDate}</a>
+        <br><br>
+      <a href="${result_link}">Results </a>
 
-      Vote by ${req.body.date}
+<br>
 
-      To vote:
-
-      http://localhost:8080/polls/${pollId}.
-
-      To check the results: http://localhost:8080/polls/${pollId}/results.
-
-            Thanks for using DECISION MAKER!`
-
+Thanks for using Decision Maker!
+</html>`
       };
 
       mailgun.messages().send(emailData, (error, body) => {

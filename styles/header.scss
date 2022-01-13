@@ -2,7 +2,7 @@ $text-size: 30px;
 $header-color: pink;
 
 body > header {
-  height: auto;
+  height: 80px;
   width: 100%;
   font-size: $text-size;
   background-color: $header-color;
@@ -10,8 +10,11 @@ body > header {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
+  font-size: 30px;
+  display: flex;
+  color: #612897;
 }
 
 .nav-items {
@@ -19,10 +22,27 @@ body > header {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-}
+  align-items: center;
+ }
 
+.logo {
+  font-size: 30px;
+  display: flex;
+  color: rgb(8, 138, 138);
+  font-family: ''
+}
+.fa-3x{
+  color: rgb(10, 160, 160);
+  font-size: 60px;
+}
 .nav-link {
   text-decoration: none;
+  padding: 10px ;
+  font-size: 20px;
+  align-items: center;
+  color: #612897;
 }
-
-
+.nav-link:hover {
+  font-size: 25px;
+  color:#FF008E;
+}

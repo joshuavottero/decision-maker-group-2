@@ -1,15 +1,21 @@
 .polls {
-  margin: auto;
-  margin-top: 20px;
-  border-color: black;
-  border-width: 5px, 5px, 5px, 5px;
-  border-style: solid;
-  width: 35%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
+  table-layout: fixed;
+   // margin: auto;
+  // margin-top: 20px;
+  // border-color: black;
+  // border-width: 10px, 10px, 10px, 10px;
+  // border-style: solid;
+  width: 80%;
+  height: 30px;
 
+}
+.link {
+  text-decoration: none;
+  padding: 10px ;
+  font-size: 20px;
+  align-items: center;
+  color: #612897;
+}
 .pool-form-item {
   display: flex;
   justify-content: space-between;
