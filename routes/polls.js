@@ -14,12 +14,13 @@ const mailgunHelperFunction = require('../public/scripts/mailgun')
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-    db.query (`SELECT *, to_char(description, 'dd-mm-yyyy') AS description, users.email
+    db.query (`SELECT *, to_char(description, 'dd-mm-yyyy') AS description, users.email, polls.id AS poll_id
     FROM polls
     JOIN users ON creator_id = users.id
     WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
+      console.log(polls);
       const templateVars = { polls };
 
       return res.render('polls', templateVars);

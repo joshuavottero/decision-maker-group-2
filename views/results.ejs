@@ -87,13 +87,16 @@
 
   <main>
     <section id="results">
-      <h2 id="results-title">Final Results for "<%= options[0].title %>":</h2>
+      <h2 id="results-title">Final Results for "<%= options[0].title %>"</h2>
       <% for (let i = 0; i < options.length; i++) { %>
         <% if (i === 1 && options[0].points === options[i].points) { %>
       <h3 class="print-winner">Looks like we've got a TIE!<br>The winners each have <%= options[0].points %> points.</h3>
         <% } else if (i === 1 && options[0].points !== options[i].points) { %>
       <h3 class="print-winner">"<%= options[0].label %>" WINS with <%= options[0].points %> points!</h3>
         <% } %>
+      <% } %>
+      <% if (options[0].points === 0) { %>
+      <h3 class="print-winner">Nobody's voted yet! Tell your friends to hurry up and vote!</h3>
       <% } %>
       <div id="pie-chart-container"></div>
       <div id="bar-chart-container"></div>
