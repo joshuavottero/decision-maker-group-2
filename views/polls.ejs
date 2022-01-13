@@ -31,16 +31,20 @@
 <body>
   <%- include('partials/_header') %>
   <main>
+    <% if (polls[0].name) { %>
+    <span class="creator"><%= polls[0].name %> (<%= polls[0].email%>)</span>
+    <% } else { %>
     <span class="creator"><%= polls[0].email%></span>
-          <% for(let poll of polls) { %>
+    <% } %>
+      <% for(let poll of polls) { %>
       <table class="polls">
         <tr>
 
         <td><%=poll.title%></td>
         <td><%=poll.description%></td>
-        <td> <a class="link" href="/polls/<%= poll.id %>">Vote</a></td>
-        <td> <a class="link" href="/polls/<%= poll.id %>/results">Results </a></td>
-        <td> <a class="link" href="/polls/<%= poll.id %>/delete">Delete</a></td>
+        <td> <a class="link" href="/polls/<%= poll.poll_id %>">Vote</a></td>
+        <td> <a class="link" href="/polls/<%= poll.poll_id %>/results">Results </a></td>
+        <td> <a class="link" href="/polls/<%= poll.poll_id %>/delete">Delete</a></td>
       </tr>
     </table>
 
