@@ -1,33 +1,45 @@
+@use 'header';
 .polls {
   table-layout: fixed;
-   // margin: auto;
-  // margin-top: 20px;
-  // border-color: black;
-  // border-width: 10px, 10px, 10px, 10px;
-  // border-style: solid;
+  margin: auto;
+  margin-top: 20px;
+  border-color: black;
+  border-width: 10px, 10px, 10px, 10px;
+  border-style: solid;
   width: 80%;
   height: 30px;
 
 }
 .link {
   text-decoration: none;
-  padding: 10px ;
-  font-size: 20px;
+  padding: 5px;
   align-items: center;
-  color: #612897;
-}
-.pool-form-item {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  margin-top: 40px;
-  width: 100%;
-}
-.pool-form-textarea {
-  width: 60%;
+  color: header.$link-color;
+  font-size: 25px;
 }
 
-.pool-form-button {
-  min-width: 10%;
+.link:hover {
+  font-size: 20px;
+  color: header.$hover-color;
 }
+
+.creator {
+  align-self: center;
+  font-size: 30px;
+}
+// poll-create
+// .pool-form-item {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-direction: row;
+//   margin-top: 40px;
+//   width: 100%;
+// }
+// .pool-form-textarea {
+//   width: 60%;
+// }
+
+// .pool-form-button {
+//   min-width: 10%;
+// }
 

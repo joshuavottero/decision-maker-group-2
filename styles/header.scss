@@ -1,5 +1,7 @@
 $text-size: 30px;
 $header-color: pink;
+$link-color:#612897;
+$hover-color: #FF008E;
 
 body > header {
   height: 80px;
@@ -14,7 +16,7 @@ body > header {
   flex-direction: row;
   font-size: 30px;
   display: flex;
-  color: #612897;
+  color: $link-color;
 }
 
 .nav-items {
@@ -29,20 +31,20 @@ body > header {
   font-size: 30px;
   display: flex;
   color: rgb(8, 138, 138);
-  font-family: ''
+
 }
 .fa-3x{
   color: rgb(10, 160, 160);
-  font-size: 60px;
+  font-size: 100px;
 }
 .nav-link {
   text-decoration: none;
   padding: 10px ;
   font-size: 20px;
   align-items: center;
-  color: #612897;
+  color: $link-color;
 }
 .nav-link:hover {
   font-size: 25px;
-  color:#FF008E;
+  color: $hover-color;
 }

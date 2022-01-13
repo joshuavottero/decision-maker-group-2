@@ -10,10 +10,14 @@ const { Template } = require('ejs');
 const express = require('express');
 const { Pool } = require('pg/lib');
 const router  = express.Router();
+const mailgunHelperFunction = require('../public/scripts/mailgun')
 
 module.exports = (db, mailgun) => {
   router.get('/', (req, res) => {
-    db.query (`SELECT *, to_char (description, 'dd-mm-yyyy') AS description FROM polls WHERE creator_id=$1`, [req.session.user_id])
+    db.query (`SELECT *, to_char(description, 'dd-mm-yyyy') AS description, users.email
+    FROM polls
+    JOIN users ON creator_id = users.id
+    WHERE creator_id=$1`, [req.session.user_id])
     .then(data => {
       const polls = data.rows;
       const templateVars = { polls };
@@ -30,7 +34,7 @@ module.exports = (db, mailgun) => {
   });
 
   router.get('/new', (req, res) => {
-    //res.render('poll-create');
+
     res.render('poll-create');
   });
 
@@ -171,24 +175,24 @@ module.exports = (db, mailgun) => {
                  });
                }
 
-      // send emails
-      const emailData = {
-      from:'DECISION MAKER <me@samples.mailgun.org>',
-      to: req.body.email,
-      subject: `Poll: ${req.body.pollTitle}`,
-      html:`<html> Hello, ${req.body.name}!
-<br>
-      <a href="${vote_link}">Vote Here by ${descriptionDate}</a>
-        <br><br>
-      <a href="${result_link}">Results </a>
+//       // send emails
+//       const emailData = {
+//       from:'DECISION MAKER <me@samples.mailgun.org>',
+//       to: req.body.email,
+//       subject: `Poll: ${req.body.pollTitle}`,
+//       html:`<html> Hello, ${req.body.name}!
+// <br>
+//       <a href="${vote_link}">Vote Here by ${descriptionDate}</a>
+//         <br><br>
+//       <a href="${result_link}">Results </a>
 
-<br>
+// <br>
 
-Thanks for using Decision Maker!
-</html>`
-      };
-
-      mailgun.messages().send(emailData, (error, body) => {
+// Thanks for using Decision Maker!
+// </html>`
+//       };
+      let emailHTML = mailgunHelperFunction.sendEmail(req.body.email, req.body.pollTitle, req.body.name, vote_link, result_link, descriptionDate);
+      mailgun.messages().send(emailHTML, (error, body) => {
         if(error) console.log(error)
         else console.log(body);
       });
