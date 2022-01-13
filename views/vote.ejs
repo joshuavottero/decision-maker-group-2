@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- App CSS -->
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
@@ -34,8 +35,8 @@
   <main>
 
     <h2><%= poll[0].title %></h2>
-    <h3>Poll expires on: <%= (new Date(poll[0].description)).toDateString() %></h3>
-    <p>Drag and drop each choice from the left to the right side, in order of your preference, from top to bottom!</p>
+    <h3>Poll expires on: <u><%= (new Date(poll[0].description)).toDateString() %></u></h3>
+    <p id="instructions">Drag and drop each choice from the left to the right side, in order of your favourite to least favourite, from top to bottom!</p>
     <form id="reset-button" method="GET" action="/polls/<%= poll[0].poll_id %>">
       <button type="submit" name="reset">Reset The Columns</button>
     </form>
@@ -58,7 +59,7 @@
       <input id="vote-input" type="text" name="vote">
       <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit Rankings</button>
     </form>
-    <p>Poll created by: <%= poll[0].userInfo %></p>
+    <p id="creator">Poll created by: <%= poll[0].userInfo %></p>
   </main>
 </body>
 

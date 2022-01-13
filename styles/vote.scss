@@ -2,6 +2,10 @@
   margin: 2em 0 0 0;
 }
 
+#reset-button button {
+  padding: 0.3em;
+}
+
 .vote-labels {
   margin: 0 1em 0 0;
 }
@@ -27,7 +31,7 @@
 .vote-options, .rank-options {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   flex-basis: 100%;
   flex-grow: 1;
   padding: 2em;
@@ -44,7 +48,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 1em 0;
+  margin: 1.5em 0;
   background-color: coral;
   padding: 1em;
   border-radius: 0.3em;
@@ -60,12 +64,16 @@
 #form-submit-button {
   margin: 1.5em 0;
   align-self: center;
+  padding: 0.3em;
 }
 
 #submit-alert {
-  align-self: center;
   background-color: hotpink;
   padding: 1em;
-  border-radius: 0.3em;
   margin: 0;
+}
+
+#instructions {
+  margin: 0 1em;
+  line-height: 1.5em;
 }

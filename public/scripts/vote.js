@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  const $voteItems = $('div.vote-options').find('div.vote-items');
 
   $('input#vote-input').hide();
 
@@ -41,8 +42,12 @@ $(document).ready(function() {
     if ($voteItems.length >= 1 && $('p.vote-error').length <= 0) {
       $('<p>', {
         class: 'vote-error',
-        text: 'Please rank all options'
+        text: '   Please rank all options'
       }).insertAfter('div.vote-ranking');
+
+      $('<i>', {
+        class: 'fa-solid fa-circle-exclamation'
+      }).prependTo('p.vote-error');
     }
   });
 
@@ -54,9 +59,12 @@ $(document).ready(function() {
 
       $('<p>', {
         id: 'submit-alert',
-        text: 'Thanks for voting!'
+        text: 'Thanks for voting!   '
       }).insertAfter('div.vote-ranking');
 
+      $('<i>', {
+        class: 'fa-regular fa-face-smile-wink'
+      }).appendTo('p#submit-alert');
 
       setTimeout(function() {
         window.location.href = '/polls';
