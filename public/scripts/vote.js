@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  const $voteItems = $('div.vote-options').find('div.vote-items');
 
   $('input#vote-input').hide();
 
