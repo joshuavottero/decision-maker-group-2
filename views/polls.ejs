@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- App CSS -->
@@ -28,22 +30,22 @@
 
 <body>
   <%- include('partials/_header') %>
-
   <main>
-    <% for(let poll of polls) { %>
-      <div class="polls">
-        <span><%=poll.title%></span>
-        <span><%=poll.description%></span>
-        <a href="/polls/<%= poll.id %>">Voting Link</a>
-        <a href="/polls/<%= poll.id %>/results">Results Link</a>
-        <a href="/polls/<%= poll.id %>/delete">Delete</a>
-      </div>
+    <span class="creator"><%= polls[0].email%></span>
+          <% for(let poll of polls) { %>
+      <table class="polls">
+        <tr>
+
+        <td><%=poll.title%></td>
+        <td><%=poll.description%></td>
+        <td> <a class="link" href="/polls/<%= poll.id %>">Vote</a></td>
+        <td> <a class="link" href="/polls/<%= poll.id %>/results">Results </a></td>
+        <td> <a class="link" href="/polls/<%= poll.id %>/delete">Delete</a></td>
+      </tr>
+    </table>
+
     <% } %>
-    <!-- <div class="polls">
-      <span>Poll 2:</span>
-      <a href="/">Submission Link</a>
-      <a href="/">Delete</a>
-    </div> -->
+
   </main>
 </body>
 
