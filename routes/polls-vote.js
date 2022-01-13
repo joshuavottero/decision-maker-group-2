@@ -7,7 +7,7 @@ module.exports = (db) => {
     const pollId = req.params.id;
 
     db.query (`
-    SELECT title, description, users.name AS name, options.*
+    SELECT title, description, email, users.name AS username, options.*
     FROM polls
     JOIN options ON polls.id = poll_id
     JOIN users ON users.id = creator_id
@@ -16,6 +16,14 @@ module.exports = (db) => {
     `, [pollId])
     .then(data => {
       const poll = data.rows;
+
+      for (const option of poll) {
+        if (option.username) {
+          option.userInfo = `${option.username} (${option.email})`;
+        } else {
+          option.userInfo = option.email;
+        }
+      }
 
       const templateVars = { poll };
       console.log(poll);

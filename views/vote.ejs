@@ -31,10 +31,11 @@
   <main>
 
     <h2><%= poll[0].title %></h2>
-    <h3>Poll created by: <%= poll[0].name %></h3>
-    <p>Drag and drop each option to the right side in order of your preference!</p>
-    <form class="reset-button" method="GET" action="/polls/<%= poll[0].id %>">
-      <button type="submit" name="reset">Reset</button>
+    <h3>Poll expires on: <%= (new Date(poll[0].description)).toDateString() %></h3>
+    <p>Drag and drop each choice from the left to the right side, in order of your preference!</p>
+    <p>Results are calculated using the Borda Count Method (e.g., if there are 3 choices, the choice ranked first is awarded 3 points, the choice ranked second is awarded 2, and the choice ranked last is awarded 1).</p>
+    <form id="reset-button" method="GET" action="/polls/<%= poll[0].poll_id %>">
+      <button type="submit" name="reset">Reset The Columns</button>
     </form>
     <div class="vote-labels">
       <h4>Choices</h4>
@@ -46,15 +47,16 @@
         <% for (const pollOption of poll) { %>
           <div class="vote-items" id="draggable-<%= poll.indexOf(pollOption) + 1 %>"
           draggable="true">
-            <label><%= pollOption.label %><br><%= pollOption.label_description %></label>
+            <label><strong><%= pollOption.label %>:</strong><br><%= pollOption.label_description %></label>
           </div>
         <% } %>
         </div>
         <div class="rank-options"></div>
       </div>
       <input id="vote-input" type="text" name="vote">
-      <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit</button>
+      <button id="form-submit-button" class="center form-vote-button form-vote-item" type="submit">Submit Rankings</button>
     </form>
+    <p>Poll created by: <%= poll[0].userInfo %></p>
   </main>
 </body>
 
