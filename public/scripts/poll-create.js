@@ -139,28 +139,5 @@ $(document).ready(function() {
        window.location.href="/polls";
       });
     }
-
-    //Serialize data from form
-    // const dataSerialized = unescape($(this).serialize());
-
-    // //Validate tweet length. 'text=' needs to be desconsiderated as comes with serialized default message
-    // if (dataSerialized === 'text=') {
-    //   $(".error").text("Did you write a message?").slideDown();
-    //   // 140 characters + 5 ('text=')
-    // } else if (dataSerialized.length > 145) {
-    //   $(".error").text("Too long! Your post should have no more than 140 characters!").slideDown();
-    // } else {
-    //
-    //   //window.history.back();
-    //   //restore ajex later
-    //
-    // }
   });
-
-  // //Escape Function to deal with insecure text
-  // const escape = function(str) {
-  // let div = document.createElement("div");
-  // div.appendChild(document.createTextNode(str));
-  // return div.innerHTML;
-  // };
 });

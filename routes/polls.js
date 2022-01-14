@@ -5,10 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-
-const { Template } = require('ejs');
 const express = require('express');
-const { Pool } = require('pg/lib');
 const router  = express.Router();
 const mailgunHelperFunction = require('../public/scripts/mailgun')
 
@@ -77,10 +74,6 @@ module.exports = (db, mailgun) => {
       .json({ error: err.message });
     });
   });
-
-  // router.post('/:id', (req, res) => {
-
-  // });
 
   router.post('/', async (req, res) => {
     let creatorId = -1;
@@ -199,7 +192,6 @@ module.exports = (db, mailgun) => {
       });
 
   });
-
 
   return router;
 };
