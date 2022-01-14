@@ -134,7 +134,10 @@ $(document).ready(function() {
     else {
       const formData = $(this).serialize();
       alert("poll has been made");
-      $.ajax("/polls/", {data: formData, method: "POST"})
+      $.ajax("/polls", {data: formData, method: "POST"})
+      .done(function() {
+       window.location.href="/polls";
+      });
     }
 
     //Serialize data from form

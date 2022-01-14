@@ -1,7 +1,7 @@
 -- Options table seeds
 INSERT INTO options (poll_id, label, label_description, points)
-VALUES (1,'movie1', 'a girl that lost her teddy bear', 10),
-       (1,'movie2', 'a dog that lost its blue ball', 5),
+VALUES (1,'movie1', 'a girl that lost her teddy bear', 3),
+       (1,'movie2',NULL ,2),
        (1,'movie3', 'a cat that lost its cardboard box', 1);
 
 INSERT INTO options (poll_id, label, label_description, points)
