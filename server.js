@@ -7,22 +7,14 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-// const bodyParser = require('body-parser');
 const cookieSession = require("cookie-session");
 
 
 // mailgun
-// const apiKey = process.env.API_KEY;
-// const DOMAIN = process.env.DOMAIN;
-// const formData = require('form-data');
-// const Mailgun = require('mailgun-js');
-// const mailgun = new Mailgun(formData);
-// const client = mailgun.client({username: 'api', key: API_KEY});
 const api_key = process.env.API_KEY;
 const domain = process.env.DOMAIN;
 const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
-//
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -63,11 +55,10 @@ const pollsVoteRoute = require("./routes/polls-vote");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
-// app.use("/polls", pollsRoutes(db));
 app.use("/polls", pollsRoutes(db,mailgun));
 app.use("/polls", pollsVoteRoute(db));
-// Note: mount other resources here, using the same pattern above
 
+// Note: mount other resources here, using the same pattern above
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
