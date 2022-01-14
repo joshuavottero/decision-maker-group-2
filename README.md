@@ -1,4 +1,5 @@
 # Midterm Project : Decision-maker App
+contributors: @lvgallo, @joshuavoterro, @goingdust
 
 ## Features
 * Users can login with email
@@ -19,20 +20,24 @@
 * Expiration date and status of poll
 * Character limit for option descriptions
 
+## Screenshots
+!["Screenshot of create poll page](https://github.com/joshuavottero/decision-maker-group-2/blob/master/docs/create.png)
+!["Screenshot of polls page](https://github.com/joshuavottero/decision-maker-group-2/blob/master/docs/polls.png)
+!["Screenshot of vote page](https://github.com/joshuavottero/decision-maker-group-2/blob/master/docs/vote.png)
+!["Screenshot of results page](https://github.com/joshuavottero/decision-maker-group-2/blob/master/docs/results.png)
+!["Screenshot of email](https://github.com/joshuavottero/decision-maker-group-2/blob/master/docs/email.png)
 
-
-
-#Dependencies
-   "chalk": "^2.4.2",
-    "cookie-parser": "^1.4.6",
-    "cookie-session": "^2.0.0",
-    "dotenv": "^2.0.0",
-    "ejs": "^2.6.2",
-    "express": "^4.17.1",
-    "form-data": "^4.0.0",
-    "mailgun": "^0.5.0",
-    "mailgun-js": "^0.22.0",
-    "morgan": "^1.9.1",
-    "pg": "^8.5.0",
-    "pg-native": "^3.0.0",
-    "sass": "^1.47.0"
+## Dependencies
+* chalk: ^2.4.2,
+* cookie-parser: ^1.4.6,
+* cookie-session: ^2.0.0,
+* dotenv: ^2.0.0,
+* ejs: ^2.6.2,
+* express: ^4.17.1,
+* form-data: ^4.0.0,
+* mailgun: ^0.5.0,
+* mailgun-js: ^0.22.0,
+* morgan: ^1.9.1,
+* pg: ^8.5.0,
+* pg-native: ^3.0.0,
+* sass: ^1.47.0
